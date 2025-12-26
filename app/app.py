@@ -34,7 +34,7 @@ def get_all_posts(limit: int = None):
     return text_posts
 
 @app.get("/posts/{id}")
-def get_post(id: int):
+def get_post(id: int) -> PostResponse:
     if id not in text_posts:
         raise HTTPException(status_code=404, detail="Post not found")
     return text_posts.get(id)
