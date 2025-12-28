@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from .schemas import PostCreate, PostResponse
+from .db import Post, create_db_and_tables, get_async_session
 
 app = FastAPI()
 
@@ -25,7 +26,6 @@ text_posts = {
     19: {"title": "Mindful Coding", "content": "Techniques for preventing burnout in high-stress dev roles."},
     20: {"title": "Tailwind CSS Tips", "content": "Writing cleaner utility classes using @apply and theme extensions."}
 }
-
 
 @app.get("/posts")
 def get_all_posts(limit: int = None):
